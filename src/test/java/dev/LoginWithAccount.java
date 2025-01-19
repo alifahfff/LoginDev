@@ -18,9 +18,7 @@ public class LoginWithAccount {
         this.driver.manage().window().maximize();
     }
 
-    @Test(
-            description = "Test login dengan berbagai akun"
-    )
+    @Test(description = "Test login dengan berbagai akun")
     private void loginWithAccounts() throws InterruptedException {
         Object[][] accounts = new Object[][]{
                 {By.cssSelector(".brand-apple"), "Login dengan akun Apple"},
@@ -31,27 +29,24 @@ public class LoginWithAccount {
                 {By.xpath("//form[6]"), "Login dengan akun Twitter"},
                 {By.xpath("(//a[normalize-space()='Create account'])[2]"), "Melihat halaman Register"},
                 {By.xpath("//a[normalize-space()='Forgot password?']"), "Melihat halaman Forgot Password"}};
-        Object[][] var2 = accounts;
-        int var3 = accounts.length;
 
-        for(int var4 = 0; var4 < var3; ++var4) {
-            Object[] account = var2[var4];
-            By locator = (By)account[0];
-            String description = (String)account[1];
+        for (Object[] account : accounts) {
+            By locator = (By) account[0];
+            String description = (String) account[1];
 
             try {
-                WebElement element = this.driver.findElement(locator);
+                WebElement element = driver.findElement(locator);
                 System.out.println(description);
                 element.click();
-                Thread.sleep(2000L);
-                this.driver.navigate().back();
-            } catch (Exception var9) {
-                System.out.println("Error: " + description);
-                var9.printStackTrace();
+                Thread.sleep(2000);
+                driver.navigate().back();
+            } catch (Exception e) {
+                System.out.println("Gagal menjalankan: " + description);
+                e.printStackTrace();
             }
         }
 
-        this.driver.quit();
+        driver.quit();
     }
 
 }
