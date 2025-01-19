@@ -21,8 +21,16 @@ public class LoginWithAccount {
     @Test(
             description = "Test login dengan berbagai akun"
     )
-    private void loginWithDifferentAccounts() throws InterruptedException {
-        Object[][] accounts = new Object[][]{{By.cssSelector(".brand-apple"), "Login dengan akun Apple"}, {By.xpath("//form[2]"), "Login dengan akun Facebook"}, {By.xpath("//form[3]"), "Login dengan akun Forem"}, {By.xpath("//form[4]"), "Login dengan akun GitHub"}, {By.xpath("//form[5]"), "Login dengan akun Google"}, {By.xpath("//form[6]"), "Login dengan akun Twitter"}, {By.xpath("(//a[normalize-space()='Create account'])[2]"), "Melihat halaman Register"}};
+    private void loginWithAccounts() throws InterruptedException {
+        Object[][] accounts = new Object[][]{
+                {By.cssSelector(".brand-apple"), "Login dengan akun Apple"},
+                {By.xpath("//form[2]"), "Login dengan akun Facebook"},
+                {By.xpath("//form[3]"), "Login dengan akun Forem"},
+                {By.xpath("//form[4]"), "Login dengan akun GitHub"},
+                {By.xpath("//form[5]"), "Login dengan akun Google"},
+                {By.xpath("//form[6]"), "Login dengan akun Twitter"},
+                {By.xpath("(//a[normalize-space()='Create account'])[2]"), "Melihat halaman Register"},
+                {By.xpath("//a[normalize-space()='Forgot password?']"), "Melihat halaman Forgot Password"}};
         Object[][] var2 = accounts;
         int var3 = accounts.length;
 
@@ -38,7 +46,7 @@ public class LoginWithAccount {
                 Thread.sleep(2000L);
                 this.driver.navigate().back();
             } catch (Exception var9) {
-                System.out.println("Gagal menjalankan: " + description);
+                System.out.println("Error: " + description);
                 var9.printStackTrace();
             }
         }
